@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#scheduling_trading_options {
+  position:fixed;
+	margin-bottom:20px;
+	margin-left:auto;
+	margin-right:auto;
+	width:1200px;
+	bottom:10px;
+	height:300px;
+}
+
+#header {
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	font-size:40px;
+}
+
+#schedule_option_div {
+	height:500px;
+	width:500px;
+	float:left;
+	position:relative;
+	text-align:center;
+	margin:20px;
+}
+
+#trade_option_div {
+	height:500px;
+	width:500px;
+	float:right;
+	position:relative;
+	text-align:center;
+	margin:20px;
+}
+
+
+#schedule_option {
+	text-align:center;
+	border:solid red 2px;
+	padding:20px;
+	font-size:36px;
+}
+
+#trade_option {
+	text-align:center;
+	border:solid red 2px;
+	padding:20px;
+	font-size:36px;
+}
+
+a:visited, a:hover {
+	color:blue;
+}

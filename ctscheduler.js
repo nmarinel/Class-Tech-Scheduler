@@ -43,6 +43,7 @@ function pageLoad() {
 				$(this).val($('#currentPick').val());
 				
 			$("#next_arrow").click();
+			$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
 
 			//keeps what was entered there
 			$(this) = null; 

@@ -1,8 +1,12 @@
 @charset "UTF-8";
 /* CSS Document */
 
+body {
+	background-color:#9C3;
+}
+
 #scheduling_trading_options {
-  position:fixed;
+	position:fixed;
 	margin-bottom:20px;
 	margin-left:auto;
 	margin-right:auto;

@@ -6,9 +6,7 @@ var currentId, initialNum;
 window.onload = pageLoad;
 
 function pageLoad() {
-	/*Right now, the only thing this does is highlight the current day and display the date at the top. I was hoping to be able to 		exract the initials from the covered shift from the tradeshift.html document, and put them into the appropriate cell on the 		ctsheduler.html page. It's harder than I thought so I'm giving up for now.
-	*/
-
+	
 	var currentDate = new Date();
 	var day = currentDate.getDate();
 	var month = currentDate.getMonth() + 1;
@@ -37,20 +35,25 @@ function pageLoad() {
 	$('.shift').attr('maxlength',3);   //this works if we only want initials
 	$('.picker_names_textarea').attr('maxlength',3);   //this works if we only want initials
 
-	$('.shift').focus(function() { //
-		var element = this;
-		
+	$('.shift').focus( function() {
+
 		//if user presses enter, enter initials into focused box
-		$(element).keypress(function(e) {
-			
+		$(this).keypress(function(e) {
 			if (e.charCode == 13)
-				$(element).val($('#currentPick').val());
+				$(this).val($('#currentPick').val());
 				
 			$("#next_arrow").click();
-			$(element).blur();
-			
+
 			//keeps what was entered there
-			element = null; 
+			$(this) = null; 
+		});
+		
+		
+		$(this).blur( function() {
+			if( $(this).val().length ==2) {
+				$(this).css('background-color', '#e8e8e8');
+				$(this).parent().css('background-color', '#e8e8e8');
+			}
 		});
   	});
 }

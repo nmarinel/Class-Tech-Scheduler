@@ -28,18 +28,18 @@ function pageLoad() {
 	
 
 	$("#randomizingNotification").hide(); //this is visible briefly once the user enters initials, just to tell the user what's happening
-    	$("#enter_names").click(orderNames); //this is the first thing the user should click: enter names then reorder them
+    $("#enter_names").click(orderNames); //this is the first thing the user should click: enter names then reorder them
 	$("#prev_arrow").click(prevUser); //if user wishes to go back to the previous picker
 	$("#next_arrow").click(nextUser); //next picker
 
 	$('.shift').attr('maxlength',3);   //this works if we only want initials
 	$('.picker_names_textarea').attr('maxlength',3);   //this works if we only want initials
 
-	$('.shift').focus( function() {
-
+	$('.shift,.printing,.sweeps').focus( function() {
 		//if user presses enter, enter initials into focused box
 		$(this).keypress(function(e) {
 			if (e.charCode == 13)
+				e.preventDefault();
 				$(this).val($('#currentPick').val());
 				
 			$("#next_arrow").click();
@@ -50,12 +50,13 @@ function pageLoad() {
 		
 		
 		$(this).blur( function() {
-			if( $(this).val().length ==2) {
+			//If the shift has been filled, change background color to indicate so
+			if( $(this).val().length ==2 || $(this).val().length ==3 ) {
 				$(this).css('background-color', '#e8e8e8');
 				$(this).parent().css('background-color', '#e8e8e8');
 			}
 		});
-  	});
+	});
 }
 
 function orderNames(event) {
@@ -72,10 +73,10 @@ function getNames() {
 }
 
 function randomizeNames() {
-    $("#randomizingNotification").show();
+    $("#randomizingNotification").css("visibility", "visible");
     var timer = setTimeout(function (){
         randomize(nameArray);
-        $("#randomizingNotification").hide();
+        $("#randomizingNotification").css("visibility", "hidden");
         displayNames();
     }, 1000);
 }

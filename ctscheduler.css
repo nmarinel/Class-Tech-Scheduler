@@ -24,6 +24,7 @@ font-size: 15pt;
 color: red;
 float: left;
 position: relative;
+visibility:hidden;
 }
 
 #page_title {

@@ -39,19 +39,27 @@ function pageLoad() {
 		//if user presses enter, enter initials into focused box
 		$(this).keypress(function(e) {
 			if (e.charCode == 13) {
-				e.preventDefault();
-				$(this).val($('#currentPick').val());
-				$("#next_arrow").click();
-				$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
-
-				//keeps what was entered there
-				$(this) = null; 
-			}
-			
-			else
+				
+				//don't include white space
 				e.preventDefault();
 				
-			
+				//ask user to confirm choice. If they click "okay"
+				if(  confirm( $('#currentPick').val() + ", are you sure you want this shift?") ) {
+					
+					//fill in the currentPick's initials
+					$(this).val($('#currentPick').val());
+					
+					//move to the next person
+					$("#next_arrow").click();
+					
+					//make noise
+					$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
+				}
+				
+				//if user doesn't want to enter initials, empty the shift box
+				else
+					$(this).val("");
+			}
 		});
 		
 		
@@ -60,6 +68,11 @@ function pageLoad() {
 			if( $(this).val().length ==2 || $(this).val().length ==3 ) {
 				$(this).css('background-color', '#e8e8e8');
 				$(this).parent().css('background-color', '#e8e8e8');
+			}
+			
+			else {
+				$(this).css('background-color', 'white');
+				$(this).parent().css('background-color', 'white');
 			}
 		});
 	});

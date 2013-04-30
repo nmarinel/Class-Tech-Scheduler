@@ -6,9 +6,7 @@ var currentId, initialNum;
 window.onload = pageLoad;
 
 function pageLoad() {
-	/*Right now, the only thing this does is highlight the current day and display the date at the top. I was hoping to be able to 		exract the initials from the covered shift from the tradeshift.html document, and put them into the appropriate cell on the 		ctsheduler.html page. It's harder than I thought so I'm giving up for now.
-	*/
-
+	
 	var currentDate = new Date();
 	var day = currentDate.getDate();
 	var month = currentDate.getMonth() + 1;
@@ -30,29 +28,41 @@ function pageLoad() {
 	
 
 	$("#randomizingNotification").hide(); //this is visible briefly once the user enters initials, just to tell the user what's happening
-    	$("#enter_names").click(orderNames); //this is the first thing the user should click: enter names then reorder them
+    $("#enter_names").click(orderNames); //this is the first thing the user should click: enter names then reorder them
 	$("#prev_arrow").click(prevUser); //if user wishes to go back to the previous picker
 	$("#next_arrow").click(nextUser); //next picker
 
 	$('.shift').attr('maxlength',3);   //this works if we only want initials
 	$('.picker_names_textarea').attr('maxlength',3);   //this works if we only want initials
 
-	$('.shift').focus(function() { //
-		var element = this;
-		
+	$('.shift,.printing,.sweeps').focus( function() {
 		//if user presses enter, enter initials into focused box
-		$(element).keypress(function(e) {
+		$(this).keypress(function(e) {
+			if (e.charCode == 13) {
+				e.preventDefault();
+				$(this).val($('#currentPick').val());
+				$("#next_arrow").click();
+				$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
+
+				//keeps what was entered there
+				$(this) = null; 
+			}
 			
-			if (e.charCode == 13)
-				$(element).val($('#currentPick').val());
+			else
+				e.preventDefault();
 				
-			$("#next_arrow").click();
-			$(element).blur();
 			
-			//keeps what was entered there
-			element = null; 
 		});
-  	});
+		
+		
+		$(this).blur( function() {
+			//If the shift has been filled, change background color to indicate so
+			if( $(this).val().length ==2 || $(this).val().length ==3 ) {
+				$(this).css('background-color', '#e8e8e8');
+				$(this).parent().css('background-color', '#e8e8e8');
+			}
+		});
+	});
 }
 
 function orderNames(event) {
@@ -69,10 +79,10 @@ function getNames() {
 }
 
 function randomizeNames() {
-    $("#randomizingNotification").show();
+    $("#randomizingNotification").css("visibility", "visible");
     var timer = setTimeout(function (){
         randomize(nameArray);
-        $("#randomizingNotification").hide();
+        $("#randomizingNotification").css("visibility", "hidden");
         displayNames();
     }, 1000);
 }

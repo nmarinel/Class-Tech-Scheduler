@@ -43,22 +43,14 @@ function pageLoad() {
 				//don't include white space
 				e.preventDefault();
 				
-				//ask user to confirm choice. If they click "okay"
-				if(  confirm( $('#currentPick').val() + ", are you sure you want this shift?") ) {
+				$(this).val($('#currentPick').val());
 					
-					//fill in the currentPick's initials
-					$(this).val($('#currentPick').val());
+				//move to the next person
+				$("#next_arrow").click();
 					
-					//move to the next person
-					$("#next_arrow").click();
-					
-					//make noise
-					$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
-				}
+				//make noise
+				$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
 				
-				//if user doesn't want to enter initials, empty the shift box
-				else
-					$(this).val("");
 			}
 		});
 		

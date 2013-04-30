@@ -38,15 +38,20 @@ function pageLoad() {
 	$('.shift,.printing,.sweeps').focus( function() {
 		//if user presses enter, enter initials into focused box
 		$(this).keypress(function(e) {
-			if (e.charCode == 13)
+			if (e.charCode == 13) {
 				e.preventDefault();
 				$(this).val($('#currentPick').val());
-				
-			$("#next_arrow").click();
-			$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
+				$("#next_arrow").click();
+				$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
 
-			//keeps what was entered there
-			$(this) = null; 
+				//keeps what was entered there
+				$(this) = null; 
+			}
+			
+			else
+				e.preventDefault();
+				
+			
 		});
 		
 		

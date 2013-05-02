@@ -275,14 +275,34 @@ width:30px;
 }
 
 #tableOfNames {
-	width: 40%;
-	margin-left: 30%;
-	margin-right: 30%;
+	width: 100%;
 	padding:0;
 	z-index: -2;
 	visibility: hidden;
 	position: absolute;
+	background:rgba(255,255,255,0.5);
+}
+
+#tableContainer {
 	background-color:black;
+	width:40%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#namesTable {
+	width:100%;
+	border-left:solid 20px black;
+	border-right:solid 20px black;
+}
+
+caption {
+	background-color:red;
+	color:black;
+	font-size:24pt;
+	border-left:solid 20px black;
+	border-right:solid 20px black;
+	border-top:solid 20px black;
 }
 
 .initialNumber {
@@ -293,21 +313,6 @@ width:30px;
 	padding:0;
 	margin:0;
 	border: solid 1px black;
-}
-
-#namesTable {
-	width:100%;
-	border-left:solid 20px black;
-	border-right:solid 20px black;
-}
-
-caption {
-	background-color:white;
-	color:black;
-	font-size:24pt;
-	border-left:solid 20px black;
-	border-right:solid 20px black;
-	border-top:solid 20px black;
 }
 
 .enterInitials {

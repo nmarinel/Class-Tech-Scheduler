@@ -81,6 +81,8 @@ font-size: 20pt;
 button#enter_names {
 color:black;
 width:100%;
+font-size: 25px;
+margin-top: 20px;
 }
 
 a#enter_names:hover {

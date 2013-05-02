@@ -17,6 +17,7 @@ top: 30px;
 float: left;
 position: relative;
 visibility: visible;
+margin-top: 35px;
 }
 
 #randomizingNotification {
@@ -81,6 +82,8 @@ font-size: 20pt;
 button#enter_names {
 color:black;
 width:100%;
+font-size: 25px;
+margin-top: 20px;
 }
 
 a#enter_names:hover {

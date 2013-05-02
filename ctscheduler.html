@@ -9,53 +9,117 @@
 </head>
 
 <body>
-<div id="header">
-     <div id="randomizeNotContDiv">
-         <div id="randomizingNotification">randomizing...</div>
-        </div>
+	<div id="header">
+		<div id="randomizeNotContDiv">
+			 <div id="randomizingNotification">randomizing...</div>
+		</div>
 
-        <div id="helper_functions_div">
-         <div id="enter_names_div">
-             <button id="enter_names">Enter Names</button>
-             </div>
-       </div>
+		<div id="helper_functions_div">
+			<div id="enter_names_div">
+				<button id="enter_names">Enter Names</button>
+			</div>
+		</div>
    
-        <div id="page_title">
-            <!--<div id="nextWeekDiv"><button id="nextWeekButton">Next Week>></button></div>-->
-            <h1>Welcome to Classtech Shift Scheduler!</h1>
-        </div>
+		<div id="page_title">
+			<h1>Welcome to Classtech Shift Scheduler!</h1>
+		</div>
 
-        <div id="todays_date_div">
-         <div id="text_div">Today's Date:</div>
-         <div id="date_display"></div>
-</div>
+		<div id="todays_date_div">
+			<div id="text_div">Today's Date:</div>
+			<div id="date_display"></div>
+		</div>
 
-   </div>
-    
+	</div><!--end header-->
+
     <div id="main_content">
-     <div id="name_tracker">
+    	<div id="name_tracker">
+        	<div class="arrow_img_div">
+             	<h3>PREV</h3>
+            	<a href="" id="prev_arrow"><img src="Images/prev_arrow.png" alt="prev"/></a>
+           	</div>
             
-            <div class="arrow_img_div">
-             <h3>PREV</h3>
-                <a href="" id="prev_arrow"><img src="Images/prev_arrow.png" alt="prev"/></a>
-            </div>
-            
-            <div id="pick_textarea_div">
-            
-             <!--WE CAN MAKE THE TEXTAREAS HAVE A MAXLENGTH OF 2-->
+        	<div id="pick_textarea_div">
                 <textarea name="next_pick" cols="10" rows="1" class="picker_names_textarea" id="nextPick"></textarea>
-                <textarea name="current_pick" cols="10" rows="1" class="picker_names_textarea" id="currentPick"></textarea>
-                <textarea name="previous_pick" cols="10" rows="1" class="picker_names_textarea" id="previousPick"></textarea>
-            </div>
+            	<textarea name="current_pick" cols="10" rows="1" class="picker_names_textarea" id="currentPick"></textarea>
+            	<textarea name="previous_pick" cols="10" rows="1" class="picker_names_textarea" id="previousPick"></textarea>
+        	</div>
             
             <div class="arrow_img_div">
-             <a href="" id="next_arrow"><img src="Images/next_arrow.png" alt="next"/></a>
+         		<a href="" id="next_arrow"><img src="Images/next_arrow.png" alt="next"/></a>
                 <h3>NEXT</h3>
             </div>
+            
+        	<div id="delete_currPick_button">
+        		<br/>
+        		<button id="deleteButton"></button>
+        	</div>
         </div> <!--end name tracker-->
+    	
+    	<div id="tableOfNames">	
+ 			<table id="namesTable">
+       			<caption>Enter Initials For Each Employee</caption>
+       			<tr>
+        			<td class="initialNumber">1</td>
+        			<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+       			</tr>
+        
+				 <tr>
+					<td class="initialNumber">2</td>
+					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+				</tr>
+		
+				 <tr>
+					<td class="initialNumber">3</td>
+					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+				</tr>
+		
+				 <tr>
+					<td class="initialNumber">4</td>
+					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+				</tr>
+		
+				 <tr>
+					<td class="initialNumber">5</td>
+					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+				</tr>
+		
+				 <tr>
+					<td class="initialNumber">6</td>
+					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+				</tr>
+		
+				 <tr>
+					<td class="initialNumber">7</td>
+					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+				</tr>
+		
+				 <tr>
+					<td class="initialNumber">8</td>
+					<td><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+				</tr>
+		
+				 <tr>
+					<td class="initialNumber">9</td>
+					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+				</tr>
+			</table>
     
+  			<br/>
+    
+    		<div id="new_row_button">
+				<button id="add_row">Add Row</button>    	
+			</div>
+			
+			<div id="submitNames">
+				<button id="submitNamesButton">Submit</button>    	
+			</div>
+    
+    	</div><!--end table of names div -->
+    	
+    	
+    	
         <div id="the_schedule_div">
-         <table id="the_schedule">
+        	<table id="the_schedule">
                 <tr class="title_row" id="days"> <!--days-->
                     <td>Day</td>
                     
@@ -369,8 +433,8 @@
                     <td colspan="1"><textarea class="printing" rows="1" cols="2" maxlength="3" id="sat_print"></textarea></td><!--sat-->
                     <td colspan="1"><textarea class="printing" rows="1" cols="2" maxlength="3" id="sun_print"></textarea></td><!--sun-->
                 </tr>
-            </table>
-     </div> <!--end schedule div-->
-    </div><!-- end main content div-->
+       		</table>
+    	</div> <!--end schedule div-->
+	</div><!-- end main content div-->
 </body>
 </html>

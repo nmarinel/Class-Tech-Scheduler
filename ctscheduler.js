@@ -8,6 +8,10 @@ window.onload = pageLoad;
 
 function pageLoad() {
 	
+	/*********************
+	*DISPLAY CURRENT DATE*
+	*********************/
+	
 	var currentDate = new Date();
 	var day = currentDate.getDate();
 	var month = currentDate.getMonth() + 1;
@@ -27,48 +31,41 @@ function pageLoad() {
 	$('#' + day_of_week).css('background-color','yellow');
 	
 	
-
+	/********************
+	*INITIALIZE CONTROLS*
+	*********************/
 	$("#randomizingNotification").hide(); //this is visible briefly once the user enters initials, just to tell the user what's happening
     $("#enter_names").click(orderNames); //this is the first thing the user should click: enter names then reorder them
-	$("#prev_arrow").click(prevUser); //if user wishes to go back to the previous picker
-	$("#next_arrow").click(nextUser); //nextIndexpicker
-	$("#deleteButton").click(deleteUser);
+	$("#prev_arrow").click(prevUser); //if clicked, move to previous turn
+	$("#next_arrow").click(nextUser); //if clicked, move to next turn
+	$("#deleteButton").click(deleteUser);//if clicked, delete user
 
 	$('.shift').attr('maxlength',3);   //this works if we only want initials
 	$('.picker_names_textarea').attr('maxlength',3);   //this works if we only want initials
 	
-	$('.shift,.printing,.sweeps').focus( function() {
-		//if user presses enter, enter initials into focused box
-		$(this).keypress(function(e) {
-			if (e.charCode == 13) {
+	$('textarea').bind('keypress', function(e) {
+   		if(e.keyCode==13) {
+   			e.preventDefault();
+			$(this).val($('#currentPick').val());
 				
-				//don't include white space
-				e.preventDefault();
-				
-				$(this).val($('#currentPick').val());
-					
-				//move to the nextIndexperson
-				$("#next_arrow").click();
-					
-				//make noise
-				$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
-				
-			}
-		});
-		
-		
-		$(this).blur( function() {
-			//If the shift has been filled, change background color to indicate so
-			if( $(this).val().length ==2 || $(this).val().length ==3 ) {
-				$(this).css('background-color', '#e8e8e8');
-				$(this).parent().css('background-color', '#e8e8e8');
-			}
+			//move to the nextIndexperson
+			$("#next_arrow").click();
 			
-			else {
-				$(this).css('background-color', 'white');
-				$(this).parent().css('background-color', 'white');
-			}
-		});
+			//make noise
+			$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
+ 		}
+ 	}).bind('blur', function() {
+		//If the shift has been filled, change background color to indicate so
+		if( $(this).val().length ==2 || $(this).val().length ==3 ) {
+			$(this).css('background-color', '#e8e8e8');
+			$(this).parent().css('background-color', '#e8e8e8');
+		}
+			
+		//if it's empty, keep it white
+		else {
+			$(this).css('background-color', 'white');
+			$(this).parent().css('background-color', 'white');
+		}
 	});
 }
 
@@ -106,7 +103,7 @@ function randomizeNames() {
     var timer = setTimeout(function (){
         randomize(nameArray);
         $("#randomizingNotification").css("visibility", "hidden");
-        displayNames();
+        displayOrder();
     }, 1000);
 }
 
@@ -121,12 +118,13 @@ function randomize(array) {
 }
 
 //SHOW NAMES IN PICK ORDER
-function displayNames() {
-    
-     if (nameArray.length > 1) {
+function displayOrder() {
+    //if more than one user left...
+    if (nameArray.length > 1) {
+		
 		//if names have just been entered
 		if (prevIndex == null) {
-			prevIndex=-1;
+			prevIndex= -1;
 			currIndex= 0;
 			nextIndex = 1;
 			$("#previousPick").val("");
@@ -178,7 +176,7 @@ function nextUser(event) {
 	if (prevIndex >= nameArray.length)
 		prevIndex = 0;
 
-	displayNames();
+	displayOrder();
 }
 
 //MOVE TO THE PREVIOUS PICKER
@@ -199,7 +197,7 @@ function prevUser() {
 	if (nextIndex < 0)
 		nextIndex = nameArray.length-1;
 
-	displayNames();
+	displayOrder();
 }
 
 //DELETE PICKER WHEN THEY HAVE CHOSEN ALL DESIRED SHIFTS
@@ -220,7 +218,7 @@ function deleteUser() {
 		nextIndex = 1;
 	}
     
-    displayNames();	
+    displayOrder();	
 }
 
 

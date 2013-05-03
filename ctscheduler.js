@@ -1,6 +1,6 @@
 var nameArray;
-var curr, next;
-var prev = null;
+var currIndex, nextIndex;
+var prevIndex = null;
 var currentId, initialNum;
 
 
@@ -31,7 +31,7 @@ function pageLoad() {
 	$("#randomizingNotification").hide(); //this is visible briefly once the user enters initials, just to tell the user what's happening
     $("#enter_names").click(orderNames); //this is the first thing the user should click: enter names then reorder them
 	$("#prev_arrow").click(prevUser); //if user wishes to go back to the previous picker
-	$("#next_arrow").click(nextUser); //next picker
+	$("#next_arrow").click(nextUser); //nextIndexpicker
 	$("#deleteButton").click(deleteUser);
 
 	$('.shift').attr('maxlength',3);   //this works if we only want initials
@@ -47,7 +47,7 @@ function pageLoad() {
 				
 				$(this).val($('#currentPick').val());
 					
-				//move to the next person
+				//move to the nextIndexperson
 				$("#next_arrow").click();
 					
 				//make noise
@@ -123,45 +123,60 @@ function randomize(array) {
 //SHOW NAMES IN PICK ORDER
 function displayNames() {
     
-	if (next >= nameArray.length) {
-		curr == nameArray.length - 1;
-		current = nameArray[curr];
-		previous = nameArray[prev];
-
-		$("#currentPick").val(current);
-		$("#nextPick").val("");
-		$("#previousPick").val(previous);
-	} 
-
-	else {
-		if (prev != null) {
-			previous = nameArray[prev];
-			$("#previousPick").val(previous);
-		} else {
-			curr = 0;
-			next = 1;
+     if (nameArray.length > 1) {
+		//if names have just been entered
+		if (prevIndex == null) {
+			prevIndex=-1;
+			currIndex= 0;
+			nextIndex = 1;
 			$("#previousPick").val("");
+			$("#nextPick").val("Next: " + nameArray[nextIndex]);
+			$("#currentPick").val(nameArray[currIndex]);
+		} 
+	
+		//if two users left, 
+		else if (nameArray.length == 2) {
+			$("#nextPick").val("Next: " + nameArray[prevIndex]);
+			$("#previousPick").val("Prev: " + nameArray[prevIndex]);
+			$("#currentPick").val(nameArray[currIndex]);
+		}	
+	
+		else {
+			$("#previousPick").val("Prev: " + nameArray[prevIndex]);
+			$("#nextPick").val("Next: " + nameArray[nextIndex]);
+			$("#currentPick").val(nameArray[currIndex]);
 		}
-
-		current = nameArray[curr];
-		next_pick = nameArray[next];
-		$("#nextPick").val(next_pick);
-		$("#currentPick").val(current);
 	}
 	
-	$('#deleteButton').html( "Delete " + $('#currentPick').val() );
-}
+	//if one user left
+    else {
+    	$("#currentPick").val(nameArray);
+    	$("#nextPick").val("");
+    	$("#previousPick").val("");
+    }
+    
+	//reflect current user in delete button
+	$('#deleteButton').html( "Delete " + $('#currentPick').val().toUpperCase() );
+} 
 
-//MOVE TO THE NEXT PICKER 
+
+//MOVE TO THE nextIndexPICKER 
 function nextUser(event) {
 	event.preventDefault();
 
-	prev = curr;
-	curr = next; 
-	next++;
+	prevIndex++;
+	currIndex++; 
+	nextIndex++;
 
-	if (next > nameArray.length-1)
-		next = 0;
+	//if at the end of the order, loop around
+	if (nextIndex >= nameArray.length)
+		nextIndex = 0;
+	
+	if (currIndex >= nameArray.length)
+		currIndex = 0;
+	
+	if (prevIndex >= nameArray.length)
+		prevIndex = 0;
 
 	displayNames();
 }
@@ -170,27 +185,42 @@ function nextUser(event) {
 function prevUser() {
 	event.preventDefault();
 
-	next = curr;
-	curr = prev;
-	prev--;
+	nextIndex--;
+	currIndex--;
+	prevIndex--;
 
-	if (prev < 0)
-		prev = nameArray.length-1;
+	
+	if (prevIndex < 0) 
+		prevIndex = nameArray.length-1;
+	
+	if (currIndex < 0)
+		currIndex = nameArray.length-1;
+	
+	if (nextIndex < 0)
+		nextIndex = nameArray.length-1;
 
 	displayNames();
 }
 
 //DELETE PICKER WHEN THEY HAVE CHOSEN ALL DESIRED SHIFTS
 function deleteUser() {
-    
-    nameArray.splice(curr,1);
-    curr = next;
-    next++;
-    
-    if (next > nameArray.length-1)
-		next = 0;
 
-	displayNames();
+	//remove value at current index
+    nameArray.splice(currIndex,1);
+    
+	if (nextIndex >= nameArray.length) {
+		currIndex = nameArray.length-1;
+		nextIndex = 0;
+		prevIndex = currIndex-1;
+	}
+		 
+	if (currIndex >= nameArray.length || prevIndex >= nameArray.length) {
+		prevIndex = nameArray.length-1;
+		currIndex = 0;
+		nextIndex = 1;
+	}
+    
+    displayNames();	
 }
 
 

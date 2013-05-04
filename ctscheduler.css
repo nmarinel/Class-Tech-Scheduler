@@ -91,13 +91,10 @@ color:red;
 background-color:#3399FF;
 }
 
-
-
 #main_content {
 width:100%;
 height:600px;
 }
-
 
 #name_tracker {
 width:10%;
@@ -111,7 +108,6 @@ font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
 color:#03C;
 margin:0;
 }
-
 
 .picker_names_textarea {
   float:left;
@@ -202,7 +198,6 @@ resize:none;
 text-align:center;
 }
 
-
 textarea.printing {
 width: 100%;
 font-size: 10pt;
@@ -241,7 +236,6 @@ float: left;
 background-color:#d8d8d8;
 }
 
-
 .black_blank {
 background-color:black;
 }
@@ -275,7 +269,11 @@ width:30px;
 }
 
 #tableOfNames {
+<<<<<<< HEAD
 	width: 100%;
+=======
+  width: 100%;
+>>>>>>> 0a375ee5de94e56487a8badfbcc23c0d096c6b28
 	padding:0;
 	z-index: -2;
 	visibility: hidden;
@@ -284,6 +282,7 @@ width:30px;
 }
 
 #tableContainer {
+<<<<<<< HEAD
 	background-color:black;
 	width:40%;
 	margin-left:auto;
@@ -303,6 +302,27 @@ caption {
 	border-left:solid 20px black;
 	border-right:solid 20px black;
 	border-top:solid 20px black;
+=======
+	background-color: #CCFFFF;
+	width:40%;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius: 25px;
+	border: solid 5px #0033FF;
+}
+
+#namesTable {
+	margin-left: auto;
+	margin-right:auto;
+	width:80%;
+	border-collapse: collapse;
+}
+
+caption {
+	font-family: Arial, Verdana, Sans-serif;
+	color:black;
+	font-size:24pt;
+>>>>>>> 0a375ee5de94e56487a8badfbcc23c0d096c6b28
 }
 
 .initialNumber {
@@ -357,5 +377,8 @@ caption {
 	font-size:15pt;
 	text-transform:uppercase;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0a375ee5de94e56487a8badfbcc23c0d096c6b28

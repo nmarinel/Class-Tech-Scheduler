@@ -269,11 +269,7 @@ width:30px;
 }
 
 #tableOfNames {
-<<<<<<< HEAD
 	width: 100%;
-=======
-  width: 100%;
->>>>>>> 0a375ee5de94e56487a8badfbcc23c0d096c6b28
 	padding:0;
 	z-index: -2;
 	visibility: hidden;
@@ -282,27 +278,6 @@ width:30px;
 }
 
 #tableContainer {
-<<<<<<< HEAD
-	background-color:black;
-	width:40%;
-	margin-left:auto;
-	margin-right:auto;
-}
-
-#namesTable {
-	width:100%;
-	border-left:solid 20px black;
-	border-right:solid 20px black;
-}
-
-caption {
-	background-color:red;
-	color:black;
-	font-size:24pt;
-	border-left:solid 20px black;
-	border-right:solid 20px black;
-	border-top:solid 20px black;
-=======
 	background-color: #CCFFFF;
 	width:40%;
 	margin-left:auto;
@@ -322,7 +297,6 @@ caption {
 	font-family: Arial, Verdana, Sans-serif;
 	color:black;
 	font-size:24pt;
->>>>>>> 0a375ee5de94e56487a8badfbcc23c0d096c6b28
 }
 
 .initialNumber {
@@ -377,8 +351,3 @@ caption {
 	font-size:15pt;
 	text-transform:uppercase;
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0a375ee5de94e56487a8badfbcc23c0d096c6b28

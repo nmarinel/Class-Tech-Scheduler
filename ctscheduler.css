@@ -269,7 +269,7 @@ width:30px;
 }
 
 #tableOfNames {
-  width: 100%;
+	width: 100%;
 	padding:0;
 	z-index: -2;
 	visibility: hidden;

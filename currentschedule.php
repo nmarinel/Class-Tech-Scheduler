@@ -20,6 +20,7 @@
         //store each row in an array, $data
         $i=0; 
         while ($row = $result->fetch_assoc()){
+            //here I should add a "column" to the row that codes for the day.. or I could do it in JS
             $data[$i] = $row;
             $i++;
         }

@@ -50,3 +50,7 @@ a:visited{
 a:hover{
 	color: white;
 }
+
+a:link{
+	color:yellow;
+}

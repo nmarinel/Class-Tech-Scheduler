@@ -17,7 +17,7 @@ function pageLoad() {
 		mondays[i].setDate(firstMonday.getDate()+(i*7));
 		d = mondays[i].getFullYear() + "-" + (mondays[i].getMonth() + 1) + "-" + mondays[i].getDate();
 		select.options.add(new Option(mondays[i].toDateString(), d));
-	};
+	}
 	
 }
 

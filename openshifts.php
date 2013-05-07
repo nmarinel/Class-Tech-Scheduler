@@ -1,5 +1,4 @@
-   <?php
-    $d = $_GET["d"]; //get the date.  hopefully the format transfers nicely
+<?php
     $data = array(); // to be the output
 
     $hostname = "localhost";
@@ -13,12 +12,11 @@
         exit();
     }
 
-    $query = "SELECT * FROM shifts WHERE s_date BETWEEN '".$d."' AND '".$d."' + INTERVAL 7 DAY;";
+    $query = "SELECT * FROM tradeshifts ;";
     if ($result = $db->query($query)) { 
         //store each row in an array, $data
         $i=0; 
         while ($row = $result->fetch_assoc()){
-            //here I should add a "column" to the row that codes for the day.. or I could do it in JS
             $data[$i] = $row;
             $i++;
         }

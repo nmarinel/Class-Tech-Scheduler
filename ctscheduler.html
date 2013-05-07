@@ -49,74 +49,86 @@
                 <h3>NEXT</h3>
             </div>
             
-        	<div id="delete_currPick_button">
-        		<br/>
-        		<button id="deleteButton"></button>
-        	</div>
+            <div id="delete_currPick_button">
+                <br/>
+                <button id="deleteButton"></button>
+            </div>            
+            <div id="submit_shifts">
+                <br/>
+                <button id="submitButton">Submit Shifts</button>
+            </div>
         </div> <!--end name tracker-->
     	
-    	<div id="tableOfNames">	
- 			<div id="tableContainer">
- 			<table id="namesTable">
-       			<caption>Enter Initials For Each Employee</caption>
-       			<tr>
-        			<td class="initialNumber">1</td>
-        			<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
-       			</tr>
+    	<div id="tableOfNames">    
+            <div id="tableContainer">
+            <table id="namesTable">
+                <caption>Enter Initials For Each Employee</caption>
+                <tr>
+                    <td class="initialNumber">1</td>
+                    <td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+                </tr>
         
-				 <tr>
-					<td class="initialNumber">2</td>
-					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
-				</tr>
-		
-				 <tr>
-					<td class="initialNumber">3</td>
-					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
-				</tr>
-		
-				 <tr>
-					<td class="initialNumber">4</td>
-					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
-				</tr>
-		
-				 <tr>
-					<td class="initialNumber">5</td>
-					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
-				</tr>
-		
-				 <tr>
-					<td class="initialNumber">6</td>
-					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
-				</tr>
-		
-				 <tr>
-					<td class="initialNumber">7</td>
-					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
-				</tr>
-		
-				 <tr>
-					<td class="initialNumber">8</td>
-					<td><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
-				</tr>
-		
-				 <tr>
-					<td class="initialNumber">9</td>
-					<td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
-				</tr>
-			</table>
+                 <tr>
+                    <td class="initialNumber">2</td>
+                    <td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+                </tr>
+        
+                 <tr>
+                    <td class="initialNumber">3</td>
+                    <td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+                </tr>
+        
+                 <tr>
+                    <td class="initialNumber">4</td>
+                    <td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+                </tr>
+        
+                 <tr>
+                    <td class="initialNumber">5</td>
+                    <td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+                </tr>
+        
+                 <tr>
+                    <td class="initialNumber">6</td>
+                    <td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+                </tr>
+        
+                 <tr>
+                    <td class="initialNumber">7</td>
+                    <td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+                </tr>
+        
+                 <tr>
+                    <td class="initialNumber">8</td>
+                    <td><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+                </tr>
+        
+                 <tr>
+                    <td class="initialNumber">9</td>
+                    <td class="enterInitials"><textarea class="name" rows="1" cols="2" maxlength="3" name="name"></textarea></td>
+                </tr>
+            </table>
     
-  			<br/>
+            <br/>
     
-    		<div id="new_row_button">
-				<button id="add_row">Add Row</button>    	
-			</div>
-			
-			<div id="submitNames">
-				<button id="submitNamesButton">Submit</button>    	
-			</div>
-    		</div>
-    	</div><!--end table of names div -->
-    	
+            <div id="new_row_button">
+                <button id="add_row">Add Row</button>       
+            </div>
+            
+            <div id="submitNames">
+                <button id="submitNamesButton">Submit</button>      
+            </div>
+            </div>
+        </div><!--end table of names div -->
+
+
+        <div id="submitForm"> 
+            <div id="submitFormContainer">
+                <select id="weekof_dropdown"></select>
+                <button id="submitShifts">Submit to Database</button>
+            </div>
+        </div><!--end submission form div -->
+        
     	
     	
         <div id="the_schedule_div">
@@ -158,26 +170,31 @@
                     <td rowspan="33" class="black_blank"></td><!--sun-->
                 </tr>
                 
+                <!-- id semantics:
+                    day-time-other
+                    days: m, t, w, r, f, sat, sun
+                    time: in military
+                    other: some shifts need special identification if they are duplicates -->
                 <tr>
                     <td class="shift1">7:00 AM</td>
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td>
+                    <td rowspan="4"><textarea class="shift" id="m-0700-1" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="m-0700-2" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td>
                     <td rowspan="7" class="black_blank"></td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td>
+                    <td rowspan="4"><textarea class="shift" id="t-0700-1" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="t-0700-2" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td>
                     <td rowspan="7" class="black_blank"></td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td>
+                    <td rowspan="4"><textarea class="shift" id="w-0700-1" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="w-0700-2" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td>
                     <td rowspan="7" class="black_blank"></td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--thurs-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td>
+                    <td rowspan="4"><textarea class="shift" id="r-0700-1" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="r-0700-2" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td>
                     <td rowspan="7" class="black_blank"></td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--fri-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td>
+                    <td rowspan="4"><textarea class="shift" id="f-0700-1" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--fri-->
+                    <td rowspan="4"><textarea class="shift" id="f-0700-2" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td>
                 </tr>
                 
                 <tr><td class="shift1">7:30 AM</td></tr>
@@ -189,19 +206,19 @@
                 <tr>
                     <td class="shift1">9:00 AM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="m-0900" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--mon-->
                     <td rowspan="2" class="black_blank"></td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="t-0900" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--tues-->
                     <td rowspan="2" class="black_blank"></td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="w-0900" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--wed-->
                     <td rowspan="2" class="black_blank"></td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="r-0900" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--thurs-->
                     <td rowspan="2" class="black_blank"></td>
                    
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--fri-->
+                    <td rowspan="4"><textarea class="shift" id="f-0900" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--fri-->
                     <td rowspan="2" class="black_blank"></td>
                     
                 </tr>
@@ -211,30 +228,30 @@
                 <tr>
                     <td class="shift1">10:00 AM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">10-12</p></td><!--mon (B)-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">10-12</p></td><!--tues (B)-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">10-12</p></td><!--wed (B)-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">10-12</p></td><!--thurs (B)-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">10-12</p></td><!--fri (B)-->
+                    <td rowspan="4"><textarea class="shift" id="m-1000" rows="1" cols="2"></textarea><p class="shiftTime">10-12</p></td><!--mon (B)-->
+                    <td rowspan="4"><textarea class="shift" id="t-1000" rows="1" cols="2"></textarea><p class="shiftTime">10-12</p></td><!--tues (B)-->
+                    <td rowspan="4"><textarea class="shift" id="w-1000" rows="1" cols="2"></textarea><p class="shiftTime">10-12</p></td><!--wed (B)-->
+                    <td rowspan="4"><textarea class="shift" id="r-1000" rows="1" cols="2"></textarea><p class="shiftTime">10-12</p></td><!--thurs (B)-->
+                    <td rowspan="4"><textarea class="shift" id="f-1000" rows="1" cols="2"></textarea><p class="shiftTime">10-12</p></td><!--fri (B)-->
                 </tr>
                 
                 <tr>
                     <td class="shift1">10:30 AM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">10:30 - 12:30</p></td><!--mon (c)-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">10:30 - 12:30</p></td><!--tues (c)-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">10:30 - 12:30</p></td><!--wed (c)-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">10:30 - 12:30</p></td><!--thurs (c)-->
+                    <td rowspan="4"><textarea class="shift" id="m-1030" rows="1" cols="2"></textarea><p class="shiftTime">10:30 - 12:30</p></td><!--mon (c)-->
+                    <td rowspan="4"><textarea class="shift" id="t-1030" rows="1" cols="2"></textarea><p class="shiftTime">10:30 - 12:30</p></td><!--tues (c)-->
+                    <td rowspan="4"><textarea class="shift" id="w-1030" rows="1" cols="2"></textarea><p class="shiftTime">10:30 - 12:30</p></td><!--wed (c)-->
+                    <td rowspan="4"><textarea class="shift" id="r-1030" rows="1" cols="2"></textarea><p class="shiftTime">10:30 - 12:30</p></td><!--thurs (c)-->
                 </tr>
                 
                 <tr>
                     <td class="shift2">11:00 AM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">11 - 1</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">11 - 1</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">11 - 1</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">11 - 1</p></td><!--thurs-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">11 - 1</p></td><!--fri-->
+                    <td rowspan="4"><textarea class="shift" id="m-1100" rows="1" cols="2"></textarea><p class="shiftTime">11 - 1</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1100" rows="1" cols="2"></textarea><p class="shiftTime">11 - 1</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1100" rows="1" cols="2"></textarea><p class="shiftTime">11 - 1</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1100" rows="1" cols="2"></textarea><p class="shiftTime">11 - 1</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="f-1100" rows="1" cols="2"></textarea><p class="shiftTime">11 - 1</p></td><!--fri-->
                 </tr>
                 
                 <tr><td class="shift2">11:30 AM</td></tr>
@@ -242,30 +259,29 @@
                 <tr>
                     <td class="shift2">12:00 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">12 - 2</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">12 - 2</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">12 - 2</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">12 - 2</p></td><!--thurs-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">12 - 2</p></td><!--fri-->
+                    <td rowspan="4"><textarea class="shift" id="m-1200" rows="1" cols="2"></textarea><p class="shiftTime">12 - 2</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1200" rows="1" cols="2"></textarea><p class="shiftTime">12 - 2</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1200" rows="1" cols="2"></textarea><p class="shiftTime">12 - 2</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1200" rows="1" cols="2"></textarea><p class="shiftTime">12 - 2</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="f-1200" rows="1" cols="2"></textarea><p class="shiftTime">12 - 2</p></td><!--fri-->
                 </tr>
                 
                 <tr>
                     <td class="shift2">12:30 PM</td>
-                    
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">12:30 - 2:30</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">12:30 - 2:30</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">12:30 - 2:30</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">12:30 - 2:30</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="m-1230" rows="1" cols="2"></textarea><p class="shiftTime">12:30 - 2:30</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1230" rows="1" cols="2"></textarea><p class="shiftTime">12:30 - 2:30</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1230" rows="1" cols="2"></textarea><p class="shiftTime">12:30 - 2:30</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1230" rows="1" cols="2"></textarea><p class="shiftTime">12:30 - 2:30</p></td><!--thurs-->
                 </tr>
                 
                 <tr>
                     <td class="shift2">1:00 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">1 - 3</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">1 - 3</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">1 - 3</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">1 - 3</p></td><!--thurs-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">1 - 3</p></td><!--fri-->
+                    <td rowspan="4"><textarea class="shift" id="m-1300" rows="1" cols="2"></textarea><p class="shiftTime">1 - 3</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1300" rows="1" cols="2"></textarea><p class="shiftTime">1 - 3</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1300" rows="1" cols="2"></textarea><p class="shiftTime">1 - 3</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1300" rows="1" cols="2"></textarea><p class="shiftTime">1 - 3</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="f-1300" rows="1" cols="2"></textarea><p class="shiftTime">1 - 3</p></td><!--fri-->
                 </tr>
                 
                 <tr><td class="shift2">1:30 PM</td></tr>
@@ -273,30 +289,30 @@
                 <tr>
                     <td class="shift2">2:00 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">2 - 4</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">2 - 4</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">2 - 4</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">2 - 4</p></td><!--thurs-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">2 - 4</p></td><!--fri-->
+                    <td rowspan="4"><textarea class="shift" id="m-1400" rows="1" cols="2"></textarea><p class="shiftTime">2 - 4</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1400" rows="1" cols="2"></textarea><p class="shiftTime">2 - 4</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1400" rows="1" cols="2"></textarea><p class="shiftTime">2 - 4</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1400" rows="1" cols="2"></textarea><p class="shiftTime">2 - 4</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="f-1400" rows="1" cols="2"></textarea><p class="shiftTime">2 - 4</p></td><!--fri-->
                 </tr>
                 
                 <tr>
                     <td class="shift2">2:30 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">2:30 - 4:30</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">2:30 - 4:30</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">2:30 - 4:30</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">2:30 - 4:30</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="m-1430" rows="1" cols="2"></textarea><p class="shiftTime">2:30 - 4:30</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1430" rows="1" cols="2"></textarea><p class="shiftTime">2:30 - 4:30</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1430" rows="1" cols="2"></textarea><p class="shiftTime">2:30 - 4:30</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1430" rows="1" cols="2"></textarea><p class="shiftTime">2:30 - 4:30</p></td><!--thurs-->
                 </tr>
                 
                 <tr>
                     <td class="shift3">3:00 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">3 - 5</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">3 - 5</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">3 - 5</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">3 - 5</p></td><!--thurs-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">3 - 5</p></td><!--fri-->
+                    <td rowspan="4"><textarea class="shift" id="m-1500" rows="1" cols="2"></textarea><p class="shiftTime">3 - 5</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1500" rows="1" cols="2"></textarea><p class="shiftTime">3 - 5</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1500" rows="1" cols="2"></textarea><p class="shiftTime">3 - 5</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1500" rows="1" cols="2"></textarea><p class="shiftTime">3 - 5</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="f-1500" rows="1" cols="2"></textarea><p class="shiftTime">3 - 5</p></td><!--fri-->
                 </tr>
                 
                 <tr><td class="shift3">3:30 PM</td></tr>
@@ -304,31 +320,31 @@
                 <tr>
                     <td class="shift3">4:00 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">4 - 6</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">4 - 6</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">4 - 6</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">4 - 6</p></td><!--thurs-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">4 - 6</p></td><!--fri-->
+                    <td rowspan="4"><textarea class="shift" id="m-1600" rows="1" cols="2"></textarea><p class="shiftTime">4 - 6</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1600" rows="1" cols="2"></textarea><p class="shiftTime">4 - 6</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1600" rows="1" cols="2"></textarea><p class="shiftTime">4 - 6</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1600" rows="1" cols="2"></textarea><p class="shiftTime">4 - 6</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="f-1600" rows="1" cols="2"></textarea><p class="shiftTime">4 - 6</p></td><!--fri-->
                 </tr>
                 
                 <tr>
                     <td class="shift3">4:30 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">4:30 - 6:30</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">4:30 - 6:30</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">4:30 - 6:30</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">4:30 - 6:30</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="m-1630" rows="1" cols="2"></textarea><p class="shiftTime">4:30 - 6:30</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1630" rows="1" cols="2"></textarea><p class="shiftTime">4:30 - 6:30</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1630" rows="1" cols="2"></textarea><p class="shiftTime">4:30 - 6:30</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1630" rows="1" cols="2"></textarea><p class="shiftTime">4:30 - 6:30</p></td><!--thurs-->
                   
                 </tr>
                 
                 <tr>
                     <td class="shift3">5:00 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">5 - 7</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">5 - 7</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">5 - 7</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">5 - 7</p></td><!--thurs-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">5 - 7</p></td><!--fri-->
+                    <td rowspan="4"><textarea class="shift" id="m-1700" rows="1" cols="2"></textarea><p class="shiftTime">5 - 7</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1700" rows="1" cols="2"></textarea><p class="shiftTime">5 - 7</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1700" rows="1" cols="2"></textarea><p class="shiftTime">5 - 7</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1700" rows="1" cols="2"></textarea><p class="shiftTime">5 - 7</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="f-1700" rows="1" cols="2"></textarea><p class="shiftTime">5 - 7</p></td><!--fri-->
                 </tr>
                 
                 <tr><td class="shift3">5:30 PM</td></tr>
@@ -336,10 +352,10 @@
                 <tr>
                     <td class="shift3">6:00 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">6 - 8</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">6 - 8</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">6 - 8</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">6 - 8</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="m-1800" rows="1" cols="2"></textarea><p class="shiftTime">6 - 8</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1800" rows="1" cols="2"></textarea><p class="shiftTime">6 - 8</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1800" rows="1" cols="2"></textarea><p class="shiftTime">6 - 8</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1800" rows="1" cols="2"></textarea><p class="shiftTime">6 - 8</p></td><!--thurs-->
                     <td rowspan="10" class="black_blank"></td><!--fri-->
                 </tr>
                 
@@ -354,10 +370,10 @@
                 <tr>
                     <td class="shift4">7:00 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2" name="M79A"></textarea><p class="shiftTime">7 - 9</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="m-1900" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-1900" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-1900" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-1900" rows="1" cols="2"></textarea><p class="shiftTime">7 - 9</p></td><!--thurs-->
                     <td rowspan="8" class="black_blank"></td><!--fri-->
                 </tr>
                 
@@ -376,10 +392,10 @@
                 <tr>
                     <td class="shift4">9:00 PM</td>
                     
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--mon-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--tues-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--wed-->
-                    <td rowspan="4"><textarea class="shift" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--thurs-->
+                    <td rowspan="4"><textarea class="shift" id="m-2100" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--mon-->
+                    <td rowspan="4"><textarea class="shift" id="t-2100" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--tues-->
+                    <td rowspan="4"><textarea class="shift" id="w-2100" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--wed-->
+                    <td rowspan="4"><textarea class="shift" id="r-2100" rows="1" cols="2"></textarea><p class="shiftTime">9 - 11</p></td><!--thurs-->
                 </tr>
                 
                 <tr><td class="shift4">9:30 PM</td></tr>
@@ -390,49 +406,49 @@
                     <td class="other">Sweeps</td>
                     
                     <td colspan="3" class="sweep_shift">
-                     <textarea class="sweeps" rows="1" cols="2" maxlength="3"></textarea>
+                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="m-sweep-1"></textarea>
                         <div class="sweep_separator">/</div>
-                        <textarea class="sweeps" rows="1" cols="2" maxlength="3"></textarea>
+                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="m-sweep-2"></textarea>
                     </td><!--mon-->
                     
                     <td colspan="3" class="sweep_shift">
-                     <textarea class="sweeps" rows="1" cols="2" maxlength="3"></textarea>
+                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="t-sweep-1"></textarea>
                         <div class="sweep_separator">/</div>
-                        <textarea class="sweeps" rows="1" cols="2" maxlength="3"></textarea>
+                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="t-sweep-2"></textarea>
                     </td><!--tues-->
                     
                     <td colspan="3" class="sweep_shift">
-                     <textarea class="sweeps" rows="1" cols="2" maxlength="3"></textarea>
+                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="w-sweep-1"></textarea>
                         <div class="sweep_separator">/</div>
-                        <textarea class="sweeps" rows="1" cols="2" maxlength="3"></textarea>
+                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="w-sweep-2"></textarea>
                     </td><!--wed-->
                     
                     <td colspan="3" class="sweep_shift">
-                     <textarea class="sweeps" rows="1" cols="2" maxlength="3"></textarea>
+                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="r-sweep-1"></textarea>
                         <div class="sweep_separator">/</div>
-                        <textarea class="sweeps" rows="1" cols="2" maxlength="3"></textarea>
+                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="r-sweep-2"></textarea>
                     </td><!--thurs-->
                     
-					<td colspan="2" class="sweep_shift">
-                     <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="friday_sweep1"></textarea>
+            <td colspan="2" class="sweep_shift">
+                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="f-sweep-1"></textarea>
                         <div class="sweep_separator">/</div>
-                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="friday_sweep2"></textarea>
+                        <textarea class="sweeps" rows="1" cols="2" maxlength="3" id="f-sweep-2"></textarea>
                     </td><!--fri-->
                     
-                    <td><textarea class="sweeps" rows="1" cols="2" maxlength="3" id="sat_sweep"></textarea></td>
-                    <td><textarea class="sweeps" rows="1" cols="2" maxlength="3" id="sun_sweep"></textarea></td>
+                    <td><textarea class="sweeps" rows="1" cols="2" maxlength="3" id="sat-sweep"></textarea></td>
+                    <td><textarea class="sweeps" rows="1" cols="2" maxlength="3" id="sun-sweep"></textarea></td>
                 </tr>
                 
                 <tr>
                     <td class="other">Printing</td>
                     
-                    <td colspan="3"><textarea class="printing" rows="1" cols="2" maxlength="3" id="mon_print"></textarea></td><!--mon-->
-                    <td colspan="3"><textarea class="printing" rows="1" cols="2" maxlength="3" id="tues_print"></textarea></td><!--tues-->
-                    <td colspan="3"><textarea class="printing" rows="1" cols="2" maxlength="3" id="wed_print"></textarea></td><!--wed-->
-                    <td colspan="3"><textarea class="printing" rows="1" cols="2" maxlength="3" id="thurs_print"></textarea></td><!--thurs-->
-                    <td colspan="2"><textarea class="printing" rows="1" cols="2" maxlength="3" id="fri_print"></textarea></td><!--fri-->
-                    <td colspan="1"><textarea class="printing" rows="1" cols="2" maxlength="3" id="sat_print"></textarea></td><!--sat-->
-                    <td colspan="1"><textarea class="printing" rows="1" cols="2" maxlength="3" id="sun_print"></textarea></td><!--sun-->
+                    <td colspan="3"><textarea class="printing" rows="1" cols="2" maxlength="3" id="m-print"></textarea></td><!--mon-->
+                    <td colspan="3"><textarea class="printing" rows="1" cols="2" maxlength="3" id="t-print"></textarea></td><!--tues-->
+                    <td colspan="3"><textarea class="printing" rows="1" cols="2" maxlength="3" id="w-print"></textarea></td><!--wed-->
+                    <td colspan="3"><textarea class="printing" rows="1" cols="2" maxlength="3" id="r-print"></textarea></td><!--thurs-->
+                    <td colspan="2"><textarea class="printing" rows="1" cols="2" maxlength="3" id="f-print"></textarea></td><!--fri-->
+                    <td></td>
+                    <td></td>
                 </tr>
        		</table>
     	</div> <!--end schedule div-->

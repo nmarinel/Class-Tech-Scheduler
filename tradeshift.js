@@ -7,6 +7,8 @@ function pageLoad() {
 	var year = currentDate.getFullYear();
 	var day_int = currentDate.getDay();
 	
+	addInitialsToSchedule();
+
 	$('#todays_date_display').html("<b>" + day + "/" + month + "/" + year + "</b>");
 	
 	$('#add_row').click(addRow);
@@ -69,7 +71,23 @@ function getCoverShifts() {
 	var dates = document.getElementsByName('date');
 	var times = document.getElementsByName('time');
 	var covered_person = document.getElementsByName('covering');
+
+	//get info for current shits up for garbs
+	var ajax = new XMLHttpRequest();
+	ajax.onreadystatechange = function() {
+		if (ajax.readyState == 4) {
+			if (ajax.status == 200){
+				//alert(ajax.responseText);
+				populateTable(JSON.parse(ajax.responseText));
+			} else {
+				//code to handle error
+			}
+		}
+	}
+	ajax.open("GET","openshifts.php",true);
+	ajax.send();
 	
+	// What is this?
 	for (var i = 0; i<dates.length; i++) {
 		var newDateArray = dates[i].split("/");
 		var mm = newDateArray[0];
@@ -82,7 +100,17 @@ function getCoverShifts() {
 	}
 		
 }
+function populateTable(data){
+	var names = document.getElementsByName('name');
+	var dates = document.getElementsByName('date');
+	var times = document.getElementsByName('time');
 
+    for (var i = 0; i < data.length; i++) {
+		names[i].value = data[i].name;	
+		dates[i].value = data[i].date;	
+		times[i].value = data[i].time;	
+	}
+}
 function findShiftInSchedule(date, time) {
 	
 }

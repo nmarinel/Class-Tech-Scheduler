@@ -268,7 +268,7 @@ td.weekend {
 width:30px;
 }
 
-#tableOfNames {
+#tableOfNames, #submitForm {
 	width: 100%;
 	padding:0;
 	z-index: -2;
@@ -277,7 +277,7 @@ width:30px;
 	background:rgba(255,255,255,0.5);
 }
 
-#tableContainer {
+#tableContainer, #submitFormContainer {
 	background-color: #CCFFFF;
 	width:40%;
 	margin-left:auto;

@@ -39,6 +39,7 @@ function pageLoad() {
 	$("#prev_arrow").click(prevUser); //if clicked, move to previous turn
 	$("#next_arrow").click(nextUser); //if clicked, move to next turn
 	$("#deleteButton").click(deleteUser);//if clicked, delete user
+	$("#submitButton").click(submitShifts);//if clicked, submit filled in fields
 
 	$('.shift').attr('maxlength',3);   //this works if we only want initials
 	$('.picker_names_textarea').attr('maxlength',3);   //this works if we only want initials
@@ -221,6 +222,51 @@ function deleteUser() {
     displayOrder();	
 }
 
+//SUBMIT FORM TO DATABASE
+function submitShifts() {
+	$('#submitForm').css('visibility', 'visible');
+    $('#submitForm').css('z-index', '3');
+
+    // populate monday dropdown
+    var mondays = new Array();
+	var select = document.getElementById("weekof_dropdown");
+	var firstMonday = new Date();
+	var d; // a nice date in the form yyyy-mm-dd (for mySQL)
+	firstMonday.setFullYear(2013, 0, 7);
+	
+	for (var i = 0; i < 52; i++) {
+		mondays[i] = new Date();
+		mondays[i].setMonth(firstMonday.getMonth());
+		mondays[i].setDate(firstMonday.getDate()+(i*7));
+		d = mondays[i].getFullYear() + "-" + (mondays[i].getMonth() + 1) + "-" + mondays[i].getDate();
+		select.options.add(new Option(mondays[i].toDateString(), d));
+	}
+    
+	$("#submitShifts").click(submitDB);
+
+}
+function submitDB(){
+	/*  This doesn't do what it should because I just copied it from currentschedule.js -Nick
+	//  to be adapted later
+	var ajax = new XMLHttpRequest();
+	var s = document.getElementById("weekof_dropdown");
+	var date = s.options[s.selectedIndex].value;//the monday of the week to be queried
+	ajax.onreadystatechange = function() {
+		if (ajax.readyState == 4) {
+			if (ajax.status == 200){
+				//alert(ajax.responseText);
+				fillInShifts(JSON.parse(ajax.responseText));
+			} else {
+				//code to handle error
+			}
+		}
+	}
+	ajax.open("GET","currentschedule.php?d="+date,true);
+	ajax.send();
+	*/
+}
+
+}
 
 /*
 *

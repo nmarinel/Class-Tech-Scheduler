@@ -52,7 +52,7 @@ function pageLoad() {
 			$("#next_arrow").click();
 			
 			//make noise
-			$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
+			//$('#the_schedule_div').append('<embed src="mario_jump.mp3" autostart="true" hidden="true" loop="false">');
  		}
  	}).bind('blur', function() {
 		//If the shift has been filled, change background color to indicate so
